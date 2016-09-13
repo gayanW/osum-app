@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016, Gayan Weerakutti <gayan@linuxdeveloper.space>
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  -->
+
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorAppIconDefault">#f0eef2</color>
+    <color name="colorCaptchaTint">#85f0eef2</color>
+    <color name="colorForecastFragmentText">#68646e</color>
+    <color name="colorForecastImageActive">#FF6F6845</color>
+    <color name="colorTransparentBlack">#75b94f8b</color>
+</resources>

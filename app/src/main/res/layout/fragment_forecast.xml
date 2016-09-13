@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016, Gayan Weerakutti <gayan@linuxdeveloper.space>
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:gravity="center"
+    android:onClick="toggleAnimation">
+
+        <ImageView
+            android:id="@+id/forecast_badge"
+            android:src="@drawable/ic_spender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="8dp"
+            android:tint="@color/colorForecastFragmentText"/>
+        <TextView
+            android:id="@+id/peak_diff_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:hint="@string/peak_diff_hint"
+            android:layout_alignBottom="@+id/forecast_badge"
+            android:layout_toRightOf="@+id/forecast_badge"
+            android:layout_toEndOf="@+id/forecast_badge"
+            android:text="@string/score"
+            android:textColor="#564f61"/>
+        <TextView
+            android:id="@+id/forecast_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/usage_forecast_sample_text"
+            android:textColor="@color/colorForecastFragmentText"
+            android:typeface="serif"
+            android:layout_below="@+id/peak_diff_text_view"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="15dp" />
+</RelativeLayout>

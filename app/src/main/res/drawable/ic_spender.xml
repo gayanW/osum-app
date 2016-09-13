@@ -1,0 +1,12 @@
+<!--
+  ~ Copyright (c) 2016, Gayan Weerakutti <gayan@linuxdeveloper.space>
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  -->
+
+<vector android:height="48dp" android:viewportHeight="798.912"
+    android:viewportWidth="798.912" android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#FF000000" android:pathData="M19.8,704.9l280.2,27.2c0.7,0.1 1.4,0.1 2.2,0.1c2.5,0 5,-0.5 7.3,-1.3l0.7,1.6l176,-67.2c9.2,-3.5 14.9,-12.7 13.9,-22.4c-1.1,-9.7 -8.6,-17.5 -18.4,-19l-157.5,-24.6V443.5c0,-6.1 -2.6,-11.9 -7.2,-16c-4.6,-4.1 -10.8,-6.1 -16.9,-5.5L19.8,449.2C8.6,450.3 0,459.6 0,470.7v212.8C0,694.6 8.6,703.8 19.8,704.9zM324.1,643.1l70.3,11l-70.3,26.8V643.1zM43.9,490.3l236.2,-22.9v219.5L43.9,663.9V490.3z"/>
+    <path android:fillColor="#FF000000" android:pathData="M344.8,267.6c0,0 0,68.4 43.9,108c0,0 24.3,19.2 -26.5,45.8c2.6,7.1 4.3,14.5 4.3,22.1v119l120.4,18.8c29.4,4.6 52.1,28.1 55.2,57.1c2.6,24 -8.8,46.9 -28.4,60.2h285.2V577.1c0,-93.6 -36.6,-93.6 -36.6,-93.6l-124.5,-43.2c-109.9,-36 -73.2,-64.8 -73.2,-64.8C608.5,336 608.5,267.6 608.5,267.6c58.6,-28.8 7.3,-82.8 7.3,-82.8c-3.3,-34 -18.5,-118.5 -139.2,-118.5c-112.8,0 -135.9,84.6 -139.2,118.5C337.5,184.9 286.2,238.8 344.8,267.6z"/>
+</vector>

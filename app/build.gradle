@@ -1,0 +1,36 @@
+/*
+ * Copyright (c) 2016, Gayan Weerakutti <gayan@linuxdeveloper.space>
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "space.linuxdeveloper.osum.app"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 16
+        versionName "4.2.1"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'space.linuxdeveloper.osum:login:1.1'
+    compile 'org.jsoup:jsoup:1.9.2'
+    compile 'jp.wasabeef:picasso-transformations:2.1.0'
+}

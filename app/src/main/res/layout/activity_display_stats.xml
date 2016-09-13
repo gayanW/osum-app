@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016, Gayan Weerakutti <gayan@linuxdeveloper.space>
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <space.linuxdeveloper.osum.app.view.AnimatedBackground
+        android:id="@+id/animated_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        custom:backgroundImage="@drawable/animated_background"
+        android:scrollbars="none">
+    </space.linuxdeveloper.osum.app.view.AnimatedBackground>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <space.linuxdeveloper.osum.app.view.StatItemsScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="false">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:onClick="onScrollViewChildClick"
+                android:clickable="true"
+                android:padding="10dp">
+                <space.linuxdeveloper.osum.app.view.StatItemView
+                    android:id="@+id/peak_stat_item_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    custom:item_label="PEAK">
+                </space.linuxdeveloper.osum.app.view.StatItemView>
+                <space.linuxdeveloper.osum.app.view.StatItemView
+                    android:id="@+id/total_stat_item_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    custom:item_label="TOTAL"
+                    custom:item_image="@drawable/ic_archive_black_48dp">
+                </space.linuxdeveloper.osum.app.view.StatItemView>
+                <space.linuxdeveloper.osum.app.view.StatItemView
+                    android:id="@+id/extra_stat_item_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:visibility="visible"
+                    custom:item_label="EXTRA"
+                    custom:item_image="@drawable/ic_add_box_black_48dp">
+                </space.linuxdeveloper.osum.app.view.StatItemView>
+            </LinearLayout>
+        </space.linuxdeveloper.osum.app.view.StatItemsScrollView>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:overScrollMode="never">
+
+            <android.support.v4.view.PagerTabStrip
+                android:id="@+id/pager_tab_strip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible">
+            </android.support.v4.view.PagerTabStrip>
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
+</RelativeLayout>

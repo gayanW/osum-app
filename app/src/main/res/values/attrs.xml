@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016, Gayan Weerakutti <gayan@linuxdeveloper.space>
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  -->
+
+<resources>
+  <declare-styleable name="AnimatedBackground">
+    <attr name="backgroundImage" format="integer"/>
+  </declare-styleable>
+
+  <declare-styleable name="StatItemView">
+    <attr name="item_label" format="string" />
+    <attr name="item_image" format="integer" />
+  </declare-styleable>
+</resources>

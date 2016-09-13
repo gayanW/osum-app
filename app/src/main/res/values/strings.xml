@@ -1,0 +1,76 @@
+<!--
+  ~ Copyright (c) 2016, Gayan Weerakutti <gayan@linuxdeveloper.space>
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  -->
+
+<resources>
+    <string name="app_name">osum</string>
+
+    <string name="username_hint">username</string>
+    <string name="password_hint">password</string>
+
+    <!-- captcha EditText -->
+    <string name="please_wait">PLEASE WAIT</string>
+
+    <!-- content description -->
+    <string name="captcha_view_desc">refreshing captcha image</string>
+    <string name="login_button_desc">sign in</string>
+
+    <!-- AnimatedBackground -->
+    <string name="animation_enabled">Animation Enabled!</string>
+    <string name="animation_disabled">Animation Disabled!</string>
+
+    <!-- StatItem view -->
+    <!-- n/a of n/a GB TextView -->
+    <string name="label">LABEL</string>
+    <string name="n_a">N/A</string>
+    <string name="__">__</string>
+    <string name="of">of</string>
+    <string name="gb">GB</string>
+    <string name="_0">0%</string>
+
+    <!-- ViewPager -->
+    <!-- fragment forecast -->
+    <string name="peak_diff_hint">+2.5</string>
+    <string name="score">+score</string>
+    <string name="usage_forecast_sample_text">Steady! You have only .. GB remaining over xx days. Stay on target!</string>
+
+
+    <!-- user badges -->
+    <string-array name="usage_badges">
+        <item>SAVER</item>
+        <item>SPENDER</item>
+        <item>GAMBLER</item>
+    </string-array>
+
+
+    <!-- can be moved login module -->
+    <string name="enter_captcha">ENTER CAPTCHA</string>
+    <string name="no_network_connection">No Network Connection</string>
+
+
+    <!-- ForecastFragment texts -->
+    <string-array name="saver_texts_when_gambler">
+        <item>The challenge is to change your numbers so you will never be that \'Gambler\' again!</item>
+        <item>Some people are natural-born savers. Others, not.</item>
+    </string-array>
+    <string-array name="spender_texts_when_gambler">
+        <item>Tired of being a \'Gambler\'? Google how to save bandwidth.</item>
+    </string-array>
+
+    <string-array name="spender_texts_when_saver">
+        <item>There\'s nothing wrong with being a spender</item>
+    </string-array>
+    <string-array name="gambler_texts_when_saver">
+        <item>You\'re far from being a \'Gambler\'</item>
+    </string-array>
+
+    <string-array name="gambler_texts_when_spender">
+        <item>You\'re not far from being a \'Gambler\'</item>
+    </string-array>
+    <string-array name="saver_texts_when_spender">
+        <item>There\'s nothing wrong with being a spender</item>
+    </string-array>
+</resources>
