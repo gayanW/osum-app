@@ -9,33 +9,28 @@ package space.linuxdeveloper.osum.app.forecast;
 
 import android.annotation.SuppressLint;
 
-import java.util.Calendar;
-
 import space.linuxdeveloper.osum.app.stat.StatItem;
 import space.linuxdeveloper.osum.app.stat.Stats;
 
 public class UsageForecast {
 
-    Calendar mCalendar;
-
-    StatItem mPeakStat;
-    StatItem mTotalStat;
-    StatItem mExtraStat;
+    private StatItem mPeakStat;
+    private StatItem mTotalStat;
+    private StatItem mExtraStat;
 
     // User Badges
-    public static final int SAVER = 0;
-    public static final int SPENDER = 1;
-    public static final int GAMBLER = 2;
+    private static final int SAVER = 0;
+    private static final int SPENDER = 1;
+    private static final int GAMBLER = 2;
 
     public UsageForecast(Stats stats) {
-        mCalendar = Calendar.getInstance();
         mPeakStat = stats.getPeakStat();
         mTotalStat = stats.getTotalStat();
         mExtraStat = stats.getExtraStat();
     }
 
     /** Forecast usage at the end of the month */
-    protected float getForecastUsage(float currentUsage) {
+    private float getForecastUsage(float currentUsage) {
         return currentUsage / TimeCalc.getTimeElapsed() * TimeCalc.getMillisInMonth();
     }
 
@@ -45,7 +40,7 @@ public class UsageForecast {
 
         // If has extra
         if (mExtraStat != null)
-            return " You have " + mExtraStat.getRemain() + " Extra remaining out of " + mExtraStat.getMax()
+            return " You have " + mExtraStat.getRemain() + " MB Extra remaining out of " + mExtraStat.getMax()
                     + " GB.";
 
         String forecastMsg = "";
@@ -76,7 +71,7 @@ public class UsageForecast {
     /**
      * Difference between (peak) forecast usage and the max
      */
-    protected float getPeakDiff() {
+    private float getPeakDiff() {
         float usedPeak = mPeakStat.getUsed();
         float forecastPeakUsage = getForecastUsage(usedPeak);
         float maxPeakVol = mPeakStat.getMax();
@@ -88,7 +83,7 @@ public class UsageForecast {
      * Special value used for forecasting
      * @return peakDiff / timeRemaining
      */
-    public float getDpDt() {
+    private float getDpDt() {
         return getPeakDiff() / TimeCalc.getTimeRemaining();
     }
 
