@@ -34,7 +34,7 @@ public class StatsParser extends Observable {
     // extra stats
     public float getExtraRemain() { return getValue(Path.EXTRA_VOL); }
 
-    public float getExtraPercent() { return getValue(Path.EXTRA_PERCENT); }
+    public float getExtraPercent() { return getExtraPercentage(Path.EXTRA_PERCENT); }
 
     public float getExtraMax() { return getValue(Path.EXTRA_GB); }
 
@@ -45,8 +45,29 @@ public class StatsParser extends Observable {
     }
 
     private float getValue(String path) {
-        String value = jDoc.select(path).text().replace("GB", "").replace("%", "");
-        return Float.parseFloat(value);
+        // values can be of form 7278 -64401 4096
+        // for example when multiple extra subscriptions are present
+        String values = jDoc.select(path).text().replace("GB", "").replace("%", "");
+        float total = 0;
+        for (String value : values.split(" ")) {
+            float v = Float.parseFloat(value);
+            total += (v > 0) ? v : 0;
+        }
+        return total;
+    }
+
+    /**
+     * When multiple extra subscriptions are present
+     * values can be of form {7, -209, 100}
+     */
+    private float getExtraPercentage(String path) {
+        String[] values = jDoc.select(path).text().replace("%", "").split(" ");
+        int percentage = 0;
+        for (String value : values) {
+            float v = Integer.parseInt(value);
+            percentage += (v > 0) ? v : 0;
+        }
+        return percentage / values.length;
     }
 
     public boolean hasExtra() {
