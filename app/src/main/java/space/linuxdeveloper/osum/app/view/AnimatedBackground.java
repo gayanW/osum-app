@@ -20,8 +20,8 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import space.linuxdeveloper.osum.app.AppSavedData;
 import space.linuxdeveloper.osum.app.R;
-import space.linuxdeveloper.osum.app.LoginActivity;
 
 
 public class AnimatedBackground extends HorizontalScrollView {
@@ -29,8 +29,11 @@ public class AnimatedBackground extends HorizontalScrollView {
     private ImageView mBackgroundImg;
     private TranslateAnimation mAnim;
 
+    private Context mContext;
+
     public AnimatedBackground(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initVars(context);
         inflateLayout(context);
         updateReferences();
 
@@ -44,6 +47,11 @@ public class AnimatedBackground extends HorizontalScrollView {
         }
 
         setHorizontalScrollBarEnabled(false);
+    }
+
+    private void initVars(Context context) {
+        mContext = context;
+
     }
 
     private void updateReferences() {
@@ -65,7 +73,7 @@ public class AnimatedBackground extends HorizontalScrollView {
         super.onWindowFocusChanged(hasWindowFocus);
         mAnim = newTranslateAnimation(getScreenWidth());
 
-        if (LoginActivity.sAppSavedData.isAnimationOn())
+        if (AppSavedData.getInstance(mContext).isAnimationOn())
             mBackgroundImg.startAnimation(mAnim);
     }
 
@@ -89,7 +97,7 @@ public class AnimatedBackground extends HorizontalScrollView {
     }
 
     public void toggleAnimation() {
-        final boolean isAnimationOn = LoginActivity.sAppSavedData.isAnimationOn();
+        final boolean isAnimationOn = AppSavedData.getInstance(mContext).isAnimationOn();
         if (isAnimationOn) {
             mBackgroundImg.clearAnimation();
             Toast.makeText(getContext(), R.string.animation_disabled, Toast.LENGTH_LONG).show();
@@ -98,6 +106,6 @@ public class AnimatedBackground extends HorizontalScrollView {
             mBackgroundImg.startAnimation(mAnim);
             Toast.makeText(getContext(), R.string.animation_enabled, Toast.LENGTH_LONG).show();
         }
-        LoginActivity.sAppSavedData.setAnimationOn(!isAnimationOn);
+        AppSavedData.getInstance(mContext).setAnimationOn(!isAnimationOn);
     }
 }

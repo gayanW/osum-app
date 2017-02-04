@@ -10,9 +10,11 @@ package space.linuxdeveloper.osum.app;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import space.linuxdeveloper.osum.login.SavedData;
+import space.linuxdeveloper.osumlogin.SavedData;
 
 public class AppSavedData extends SavedData {
+
+    private static AppSavedData instance;
 
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mSharedPreferencesEditor;
@@ -24,10 +26,18 @@ public class AppSavedData extends SavedData {
      *      private static final String LAST_SAVED_TIME_MAX_PEAK = "lastSavedTimeMaxPeak";
      *      private static final String LAST_SAVED_TIME_MAX_TOTAL = "lastSavedTimeMaxTotal";
      */
-    public AppSavedData(Context context) {
+
+    private AppSavedData(Context context) {
         super(context);
         mSharedPreferences = super.getSharedPreferences();
         mSharedPreferencesEditor = super.getSharedPreferencesEditor();
+    }
+
+    public static AppSavedData getInstance(Context context) {
+        if (instance == null) {
+            instance = new AppSavedData(context);
+        }
+        return instance;
     }
 
     public String getUsernameText() {
