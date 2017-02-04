@@ -26,8 +26,7 @@ class TimeCalc {
         setCalendarToBeginning();
         Date startOfMonth = calendar.getTime();
 
-        long timeDiff = rightNow.getTime() - startOfMonth.getTime();
-        return timeDiff;
+        return rightNow.getTime() - startOfMonth.getTime();
     }
 
     /**
@@ -40,8 +39,7 @@ class TimeCalc {
         setCalendarToEnd();
         Date endOfMonth = calendar.getTime();
 
-        long millis = endOfMonth.getTime() - rightNow.getTime();
-        return millis;
+        return endOfMonth.getTime() - rightNow.getTime();
     }
 
     public static int getRemainingDays() {
