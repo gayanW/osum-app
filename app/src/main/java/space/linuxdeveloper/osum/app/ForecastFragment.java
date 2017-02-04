@@ -95,7 +95,7 @@ public class ForecastFragment extends Fragment {
             mForecastTextView.setText(mForecastText);
         }
         else {
-            int arrIdentifier = getResources().getIdentifier(stringArrName, "array", R.class.getPackage().getName());
+            int arrIdentifier = getResources().getIdentifier(stringArrName, "array", getActivity().getApplicationContext().getPackageName());
             String[] forecastTexts = getResources().getStringArray(arrIdentifier);
 
             int randIndex = new Random().nextInt(forecastTexts.length);
