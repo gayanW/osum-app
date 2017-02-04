@@ -19,9 +19,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import space.linuxdeveloper.osum.app.view.AnimatedBackground;
-import space.linuxdeveloper.osum.login.LoginTask;
-import space.linuxdeveloper.osum.login.NetworkManager;
-import space.linuxdeveloper.osum.login.OnLoginListener;
+import space.linuxdeveloper.osumlogin.LoginTask;
+import space.linuxdeveloper.osumlogin.NetworkManager;
+import space.linuxdeveloper.osumlogin.OnLoginListener;
+import timber.log.BuildConfig;
 import timber.log.Timber;
 
 
@@ -36,9 +37,9 @@ public class LoginActivity extends AppCompatActivity {
     private ImageButton mLoginButton;
     private AnimatedBackground mAnimatedBackground;
 
-    public static WebView mWebView;
-    public static AppSavedData sAppSavedData;
-    public static LoginTask sLoginTask;
+    private WebView mWebView;
+    private LoginTask mLoginTask;
+    public AppSavedData mAppSavedData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +51,9 @@ public class LoginActivity extends AppCompatActivity {
         getViews();
         loadCredentials();
 
-        sLoginTask = new LoginTask(this, mWebView, new OnLoginListener() {
+        mLoginTask = new LoginTask(this, mWebView, new OnLoginListener() {
             @Override
             public void onLoadCaptcha(Bitmap bitmap) {
-                mCaptcha.setColorFilter(null);
                 mCaptcha.setImageBitmap(bitmap);
                 mCaptchaField.setText("");
                 mCaptchaField.setHint(R.string.enter_captcha);
@@ -62,12 +62,12 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onReceiveHtml(String html) {
-                saveCredentials(sLoginTask.getUsername(), sLoginTask.getPassword());
+                saveCredentials(mLoginTask.getUsername(), mLoginTask.getPassword());
 
                 // start activity
                 Intent intent = new Intent(LoginActivity.this, DisplayStatsActivity.class);
                 intent.putExtra(EXTRA_HTML, html);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
             }
 
             @Override
@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (NetworkManager.isConnected(LoginActivity.this)) {
                     // Login
                     mLoginButton.setEnabled(false);
-                    sLoginTask.submit(username, password, captcha);
+                    mLoginTask.submit(username, password, captcha);
 
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.no_network_connection, Toast.LENGTH_LONG).show();
@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
         mCaptcha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sLoginTask.refreshCaptcha();
+                mLoginTask.refreshCaptcha();
             }
         });
 
@@ -122,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initVars() {
-        sAppSavedData = new AppSavedData(this);
+        mAppSavedData = AppSavedData.getInstance(this);
     }
 
     private void setupTimber() {
@@ -141,12 +141,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loadCredentials() {
-        mUsernameField.setText(sAppSavedData.getUsernameText());
-        mPasswordField.setText(sAppSavedData.getPasswordText());
+        mUsernameField.setText(mAppSavedData.getUsernameText());
+        mPasswordField.setText(mAppSavedData.getPasswordText());
     }
 
     private void saveCredentials(String username, String password) {
-        sAppSavedData.setUsernamePassword(username, password);
+        mAppSavedData.setUsernamePassword(username, password);
     }
 
 
@@ -188,6 +188,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         mLoginButton.setEnabled(true);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mLoginTask.logout();
     }
 
     public static final String EXTRA_HTML = "space.linuxdeveloper.osum.app.HTML";

@@ -133,11 +133,4 @@ public class DisplayStatsActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
         mPagerTabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
     }
-
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        LoginActivity.sLoginTask.logout();
-    }
 }
